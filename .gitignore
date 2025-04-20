@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+
+# Secrets
+.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs & debug
+*.log
+*.csv
+downloads/
+
+# VSCode / PyCharm / IDE stuff
+.vscode/
+.idea/
+
+# ngrok auth/config
+.ngrok2/
+ngrok.yml
