@@ -1,5 +1,6 @@
 import os
 import csv
+import re
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder, MessageHandler, CallbackQueryHandler,
@@ -18,7 +19,10 @@ def get_job_name_by_topic_id(thread_id):
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if int(row['topic_id']) == thread_id:
-                    return row['job_name']
+                    raw_name = row['job_name']
+                    # 🔥 Strip [bracketed] content for clean search
+                    cleaned_name = re.sub(r'\s*\[.*?\]', '', raw_name).strip()
+                    return cleaned_name
     except Exception as e:
         print(f"Error reading topic log: {e}")
     return None
